@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "module": "CommonJS",
+        "target": "es5",
+        "jsx": "react",
+        "lib": ["esnext", "dom", "webworker"],
+        "allowJs": true,
+        "checkJs": true,
+        "alwaysStrict": true,
+        "diagnostics": true,
+        "extendedDiagnostics": true,
+        "locale": "en",
+        "moduleResolution": "node",
+        "rootDir": "src",
+        "sourceMap": true,
+        "sourceRoot": "src",
+        "skipLibCheck": true,
+        "strict": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "custom_typings"
+        ],
+        "outDir": "./dist"
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "public",
+        "**/*.spec.ts"
+    ]
+}
