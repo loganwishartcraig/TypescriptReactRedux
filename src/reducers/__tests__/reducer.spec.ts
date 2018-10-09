@@ -32,7 +32,10 @@ describe('Reducer - reducer', () => {
             type: CounterActionTypes.INCREMENT
         };
 
-        expect(reducer(startState, action)).toEqual(endState);
+        const resultState = reducer(startState, action);
+
+        expect(resultState).toEqual(endState);
+        expect(resultState).not.toBe(startState);
 
     });
 
@@ -52,7 +55,10 @@ describe('Reducer - reducer', () => {
             type: CounterActionTypes.DECREMENT
         };
 
-        expect(reducer(startState, action)).toEqual(endState);
+        const resultState = reducer(startState, action);
+
+        expect(resultState).toEqual(endState);
+        expect(resultState).not.toBe(startState);
 
     });
 
@@ -73,7 +79,10 @@ describe('Reducer - reducer', () => {
             text: 'abc'
         };
 
-        expect(reducer(startState, action)).toEqual(endState);
+        const resultState = reducer(startState, action);
+
+        expect(resultState).toEqual(endState);
+        expect(resultState).not.toBe(startState);
 
     });
 
@@ -93,7 +102,10 @@ describe('Reducer - reducer', () => {
             type: DisplayTextActionTypes.CLEAR_TEXT
         };
 
-        expect(reducer(startState, action)).toEqual(endState);
+        const resultState = reducer(startState, action);
+
+        expect(resultState).toEqual(endState);
+        expect(resultState).not.toBe(startState);
 
     });
 

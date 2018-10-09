@@ -2,6 +2,7 @@ import { Reducer } from 'redux';
 import { CounterActionTypes } from '../actionCreators/counter';
 import { DisplayTextActionTypes } from '../actionCreators/displayText';
 import { AppActions } from '../actionCreators/types';
+import { produce } from 'immer';
 
 export interface AppState {
     readonly count: number;
@@ -17,13 +18,13 @@ const reducer: Reducer<AppState, AppActions> = (state: AppState = defaultState, 
 
     switch (action.type) {
         case CounterActionTypes.INCREMENT:
-            return { ...state, count: state.count + 1 };
+            return produce(state, draft => { draft.count++; });
         case CounterActionTypes.DECREMENT:
-            return { ...state, count: state.count - 1 };
+            return produce(state, draft => { draft.count--; });
         case DisplayTextActionTypes.CLEAR_TEXT:
-            return { ...state, displayText: '' };
+            return produce(state, draft => { draft.displayText = ''; });
         case DisplayTextActionTypes.SET_TEXT:
-            return { ...state, displayText: action.text };
+            return produce(state, draft => { draft.displayText = action.text; });
         default:
             return state;
     }
