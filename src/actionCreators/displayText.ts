@@ -1,4 +1,5 @@
-import { Action, ActionCreator } from 'redux';
+import { Action } from 'redux';
+import { TypedActionCreator } from './types';
 
 export const enum DisplayTextActionTypes {
     SET_TEXT = 'DISPLAY_TEXT::SET_TEXT',
@@ -11,11 +12,11 @@ export namespace DisplayTextActions {
     export type _any = SetText | ClearText;
 }
 
-export const setText: ActionCreator<DisplayTextActions.SetText> = (text: string) => ({
+export const setText: TypedActionCreator<DisplayTextActions.SetText, [string]> = (text: string) => ({
     type: DisplayTextActionTypes.SET_TEXT,
     text
 });
 
-export const clearText: ActionCreator<DisplayTextActions.ClearText> = () => ({
+export const clearText: TypedActionCreator<DisplayTextActions.ClearText> = () => ({
     type: DisplayTextActionTypes.CLEAR_TEXT
 });

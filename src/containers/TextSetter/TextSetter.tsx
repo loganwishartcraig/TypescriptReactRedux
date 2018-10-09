@@ -24,7 +24,7 @@ const mapStateToProps: MapStateToProps<TextSetterStateProps, TextSetterOwnProps,
 });
 
 const mapDispatchToProps: MapDispatchToProps<TextSetterDispatchProps, TextSetterOwnProps> = (dispatch: Dispatch) => ({
-    onClearClick: () => dispatch(clearText('abc')),
+    onClearClick: () => dispatch(clearText()),
     onSetClick: (text: string) => dispatch(setText(text))
 });
 
