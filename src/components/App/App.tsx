@@ -1,7 +1,7 @@
 import * as React from 'react';
 import LiveCount from '../../containers/LiveCount/LiveCount';
 import CounterControls from '../../containers/CounterControls/CounterControls';
-// import Counter from '../Counter/Counter';
+import TextSetter from '../../containers/TextSetter/TextSetter';
 
 export default class App extends React.Component {
     render() {
@@ -10,6 +10,7 @@ export default class App extends React.Component {
                 <p>Test</p>
                 <p>The app is at <LiveCount/></p>
                 <CounterControls />
+                <TextSetter />
             </div>
         );
     }

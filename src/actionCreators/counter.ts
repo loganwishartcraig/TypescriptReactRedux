@@ -1,14 +1,20 @@
-import { DECREMENT, INCREMENT } from '../constants/counter';
-import { ActionCreator, Action } from 'redux';
+import { Action, ActionCreator } from 'redux';
 
-export type IncrCounterAction = Action<INCREMENT>;
-export type DecrCounterAction = Action<DECREMENT>;
-export type Actions = IncrCounterAction | DecrCounterAction;
+export const enum CounterActionTypes {
+  INCREMENT = 'COUNTER::INCREMENT',
+  DECREMENT = 'COUNTER::DECREMENT'
+}
 
-export const incrCounter: ActionCreator<IncrCounterAction> = () => ({
-  type: INCREMENT
+export namespace CounterActions {
+  export type Increment = Action<CounterActionTypes.INCREMENT>;
+  export type Decrement = Action<CounterActionTypes.DECREMENT>;
+  export type _any = Increment | Decrement;
+}
+
+export const incrCounter: ActionCreator<CounterActions.Increment> = () => ({
+  type: CounterActionTypes.INCREMENT
 });
 
-export const decrCounter: ActionCreator<DecrCounterAction> = () => ({
-  type: DECREMENT
+export const decrCounter: ActionCreator<CounterActions.Decrement> = () => ({
+  type: CounterActionTypes.DECREMENT
 });
