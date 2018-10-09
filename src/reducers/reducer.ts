@@ -24,7 +24,7 @@ const reducer: Reducer<AppState, AppActions> = (state: AppState = defaultState, 
         case DisplayTextActionTypes.CLEAR_TEXT:
             return produce(state, draft => { draft.displayText = ''; });
         case DisplayTextActionTypes.SET_TEXT:
-            return produce(state, draft => { draft.displayText = action.text; });
+            return produce(state, draft => { draft.displayText = action.payload.text; });
         default:
             return state;
     }

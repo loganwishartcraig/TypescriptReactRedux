@@ -1,4 +1,3 @@
-// import * as CounterActionCreators from '../../actionCreators/counter';
 import reducer, { AppState } from '../reducer';
 import { CounterActions, CounterActionTypes } from '../../actionCreators/counter';
 import { DisplayTextActions, DisplayTextActionTypes } from '../../actionCreators/displayText';
@@ -76,7 +75,7 @@ describe('Reducer - reducer', () => {
 
         const action: DisplayTextActions.SetText = {
             type: DisplayTextActionTypes.SET_TEXT,
-            text: 'abc'
+            payload: { text: 'abc' }
         };
 
         const resultState = reducer(startState, action);

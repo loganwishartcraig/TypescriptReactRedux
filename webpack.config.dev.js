@@ -20,10 +20,19 @@ module.exports = {
         port: 8080,
         hot: true,
         inline: true,
-        https: {
-            key: fs.readFileSync(path.join(__dirname, './localhost.key')),
-            cert: fs.readFileSync(path.join(__dirname, './localhost.cert'))
-        },
+        https: (() => {
+
+            try {
+                return {
+                    key: fs.readFileSync(path.join(__dirname, './localhost.key')),
+                    cert: fs.readFileSync(path.join(__dirname, './localhost.cert'))
+                };
+            } catch (e) {
+                if (typeof console !== 'undefined' && typeof console.error === 'function') console.error('ERR: [WebpackConfig] - https() - Failed to read key/cert file. Falling back to http\n');
+                return false;
+            }
+
+        })(),
         publicPath: '/',
     },
     module: {

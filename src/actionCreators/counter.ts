@@ -1,5 +1,4 @@
-import { Action } from 'redux';
-import { TypedActionCreator } from './types';
+import { TypedAction, TypedActionCreator } from './types';
 
 export const enum CounterActionTypes {
   INCREMENT = 'COUNTER::INCREMENT',
@@ -7,8 +6,8 @@ export const enum CounterActionTypes {
 }
 
 export namespace CounterActions {
-  export type Increment = Action<CounterActionTypes.INCREMENT>;
-  export type Decrement = Action<CounterActionTypes.DECREMENT>;
+  export type Increment = TypedAction<CounterActionTypes.INCREMENT>;
+  export type Decrement = TypedAction<CounterActionTypes.DECREMENT>;
   export type _any = Increment | Decrement;
 }
 
