@@ -1,34 +1,18 @@
-import { Reducer } from 'redux';
-import { CounterActionTypes } from '../actionCreators/counter';
-import { DisplayTextActionTypes } from '../actionCreators/displayText';
+import { combineReducers, Reducer, ReducersMapObject } from 'redux';
 import { AppActions } from '../actionCreators/types';
-import { produce } from 'immer';
+import { counterReducer, CounterState } from './counterReducer';
+import { displayTextReducer, DisplayTextState } from './displayTextReducer';
 
 export interface AppState {
-    readonly count: number;
-    readonly displayText: string;
+    readonly count: CounterState;
+    readonly displayText: DisplayTextState;
 }
 
-const defaultState: AppState = {
-    count: 0,
-    displayText: ''
+const reducerMapObject: ReducersMapObject<AppState, AppActions> = {
+    count: counterReducer,
+    displayText: displayTextReducer
 };
 
-const reducer: Reducer<AppState, AppActions> = (state: AppState = defaultState, action: AppActions): AppState => {
+const rootReducer: Reducer<AppState, AppActions> = combineReducers(reducerMapObject);
 
-    switch (action.type) {
-        case CounterActionTypes.INCREMENT:
-            return produce(state, draft => { draft.count++; });
-        case CounterActionTypes.DECREMENT:
-            return produce(state, draft => { draft.count--; });
-        case DisplayTextActionTypes.CLEAR_TEXT:
-            return produce(state, draft => { draft.displayText = ''; });
-        case DisplayTextActionTypes.SET_TEXT:
-            return produce(state, draft => { draft.displayText = action.payload.text; });
-        default:
-            return state;
-    }
-
-};
-
-export default reducer;
+export default rootReducer;
