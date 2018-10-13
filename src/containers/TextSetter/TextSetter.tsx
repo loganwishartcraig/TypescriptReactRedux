@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MapStateToProps, MapDispatchToProps, connect } from 'react-redux';
 import { AppState } from '../../reducers/reducer';
 import { Dispatch } from 'redux';
-import { setText, clearText } from '../../actionCreators/displayText';
+import { setText, clearText, concatText } from '../../actionCreators/displayText';
 
 export interface TextSetterOwnProps {
 
@@ -15,17 +15,19 @@ export interface TextSetterStateProps {
 export interface TextSetterDispatchProps {
     onClearClick: () => void;
     onSetClick: (text: string) => void;
+    onConcatClick: (text: string) => void;
 }
 
 export type TextSetterProps = TextSetterOwnProps & TextSetterStateProps & TextSetterDispatchProps;
 
-const mapStateToProps: MapStateToProps<TextSetterStateProps, TextSetterOwnProps, AppState> = ({ displayText }: AppState) => ({
+const mapStateToProps: MapStateToProps<TextSetterStateProps, TextSetterOwnProps, AppState> = ({ displayText }) => ({
     displayText
 });
 
-const mapDispatchToProps: MapDispatchToProps<TextSetterDispatchProps, TextSetterOwnProps> = (dispatch: Dispatch) => ({
+const mapDispatchToProps: MapDispatchToProps<TextSetterDispatchProps, TextSetterOwnProps> = dispatch => ({
     onClearClick: () => dispatch(clearText()),
-    onSetClick: (text: string) => dispatch(setText(text))
+    onSetClick: (text: string) => dispatch(setText(text)),
+    onConcatClick: (text: string) => dispatch(concatText(text))
 });
 
 class TTextSetter extends React.Component<TextSetterProps> {
@@ -41,11 +43,21 @@ class TTextSetter extends React.Component<TextSetterProps> {
 
         if (this.inputRef && this.inputRef.current) {
             this.props.onSetClick(this.inputRef.current.value);
+            this.inputRef.current.value = '';
         }
 
     }
 
-    render() {
+    private onConcatClick() {
+
+        if (this.inputRef && this.inputRef.current) {
+            this.props.onConcatClick(this.inputRef.current.value);
+            this.inputRef.current.value = '';
+        }
+
+    }
+
+    public render() {
 
         const { displayText } = this.props;
 
@@ -55,6 +67,7 @@ class TTextSetter extends React.Component<TextSetterProps> {
                 <br />
                 <input ref={this.inputRef} type="text" placeholder="Text Here"></input>
                 <button onClick={() => this.onSetClick()}>Set</button>
+                <button onClick={() => this.onConcatClick()}>Concat</button>
                 <button onClick={this.props.onClearClick}>Clear</button>
             </p>
         );
