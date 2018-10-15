@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
         "module": "CommonJS",
         "target": "es5",
         "jsx": "react",
