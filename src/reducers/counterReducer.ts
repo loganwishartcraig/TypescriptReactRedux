@@ -11,9 +11,9 @@ const reducer: Reducer<CounterState, AppActions> = (state = defaultState, action
 
     switch (action.type) {
         case CounterActionTypes.INCREMENT:
-            return produce(state, draft => { draft++; });
+            return produce(state, draft => draft + 1);
         case CounterActionTypes.DECREMENT:
-            return produce(state, draft => { draft--; });
+            return produce(state, draft => draft - 1);
         default:
             return state;
     }
