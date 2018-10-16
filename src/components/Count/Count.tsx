@@ -1,11 +1,23 @@
 import * as React from 'react';
 
 export interface CountProps {
-    count: number;
+    readonly value: number;
+    readonly autoIncrementing: boolean;
+    readonly autoDecrementing: boolean;
 }
 
-const Count: React.StatelessComponent<CountProps> = ({count}) => (
-    <span>{count}</span>
+const Count: React.StatelessComponent<CountProps> = ({ value, autoIncrementing, autoDecrementing }) => (
+    <span>
+
+        {value}
+
+        <br />
+        Auto incrementing: {autoIncrementing ? 'True' : 'False'}
+        <br />
+        Auto decrementing: {autoDecrementing ? 'True' : 'False'}
+
+    </span>
+
 );
 
 export default Count;

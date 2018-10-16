@@ -4,10 +4,20 @@ import { DisplayTextActions, DisplayTextActionTypes } from '../../actionCreators
 
 describe('Reducer - reducer', () => {
 
+    /**
+     * TODO:
+     *  - Add tests for 'start/stop auto incr/decr'
+     *  - Split into files to mirror reducers
+     */
+
     it('Should start with the correct default state', () => {
 
         const defaultState: AppState = {
-            count: 0,
+            count: {
+                value: 0,
+                autoDecrementing: false,
+                autoIncrementing: false
+            },
             displayText: ''
         };
 
@@ -18,12 +28,20 @@ describe('Reducer - reducer', () => {
     it('Should start increment correctly', () => {
 
         const startState: AppState = {
-            count: 3,
+            count: {
+                value: 3,
+                autoDecrementing: false,
+                autoIncrementing: false
+            },
             displayText: 'abc'
         };
 
         const endState: AppState = {
-            count: 4,
+            count: {
+                value: 4,
+                autoDecrementing: false,
+                autoIncrementing: false
+            },
             displayText: 'abc'
         };
 
@@ -41,12 +59,20 @@ describe('Reducer - reducer', () => {
     it('Should start decrement correctly', () => {
 
         const startState: AppState = {
-            count: 0,
+            count: {
+                value: 0,
+                autoDecrementing: false,
+                autoIncrementing: false
+            },
             displayText: ''
         };
 
         const endState: AppState = {
-            count: -1,
+            count: {
+                value: -1,
+                autoDecrementing: false,
+                autoIncrementing: false
+            },
             displayText: ''
         };
 
@@ -64,12 +90,20 @@ describe('Reducer - reducer', () => {
     it('Should start set text correctly', () => {
 
         const startState: AppState = {
-            count: -1,
+            count: {
+                value: -1,
+                autoDecrementing: false,
+                autoIncrementing: false
+            },
             displayText: ''
         };
 
         const endState: AppState = {
-            count: -1,
+            count: {
+                value: -1,
+                autoDecrementing: false,
+                autoIncrementing: false
+            },
             displayText: 'abc'
         };
 
@@ -88,12 +122,20 @@ describe('Reducer - reducer', () => {
     it('Should start clear text correctly', () => {
 
         const startState: AppState = {
-            count: 0,
+            count: {
+                value: 0,
+                autoDecrementing: false,
+                autoIncrementing: false
+            },
             displayText: 'abc'
         };
 
         const endState: AppState = {
-            count: 0,
+            count: {
+                value: 0,
+                autoDecrementing: false,
+                autoIncrementing: false
+            },
             displayText: ''
         };
 

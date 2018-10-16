@@ -8,7 +8,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <p>Test</p>
-                <p>The app is at <LiveCount/></p>
+                <p>The app is at <LiveCount /></p>
                 <CounterControls />
                 <TextSetter />
             </div>

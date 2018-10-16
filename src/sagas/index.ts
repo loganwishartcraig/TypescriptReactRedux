@@ -1,9 +1,9 @@
 import { all } from 'redux-saga/effects';
-import { helloSaga, watchIncrementAsync } from './incrementAsync';
+import { watchIncrementAsync, watchIncrementTimer } from './incrementAsync';
 
 export default function* rootSaga() {
     yield all([
-        helloSaga(),
-        watchIncrementAsync()
+        watchIncrementAsync(),
+        watchIncrementTimer()
     ]);
 }
