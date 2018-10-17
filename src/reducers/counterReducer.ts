@@ -28,6 +28,10 @@ const reducer: Reducer<CounterState, AppActions> = (state = defaultState, action
             return produce(state, draft => { draft.autoIncrementing = true; });
         case CounterActionTypes.END_INCREMENT_TIMER:
             return produce(state, draft => { draft.autoIncrementing = false; });
+        case CounterActionTypes.START_DECREMENT_TIMER:
+            return produce(state, draft => { draft.autoDecrementing = true; });
+        case CounterActionTypes.END_DECREMENT_TIMER:
+            return produce(state, draft => { draft.autoDecrementing = false; });
         default:
             return state;
     }

@@ -1,6 +1,6 @@
 import { delay } from 'redux-saga';
 import { takeEvery, put, call, ForkEffect, CallEffect, PutEffect, take, fork, cancel } from 'redux-saga/effects';
-import { incrCounter, CounterActionTypes, CounterActions } from '../actionCreators/counter';
+import { incrCounter, CounterActionTypes, CounterActions, decrCounter } from '../actionCreators/counter';
 
 export function* incrementAsync(): IterableIterator<CallEffect | PutEffect<CounterActions.Increment>> {
     yield call(delay, 1000);
@@ -17,6 +17,12 @@ export function* incrementTimer() {
     }
 }
 
+export function* decrementTimer() {
+    while (yield put(decrCounter())) {
+        yield call(delay, 1000);
+    }
+}
+
 export function* watchIncrementTimer() {
 
     while (yield take(CounterActionTypes.START_INCREMENT_TIMER)) {
@@ -28,4 +34,18 @@ export function* watchIncrementTimer() {
         yield cancel(autoIncrFork);
 
     }
+}
+
+export function* watchDecrementTimer() {
+
+    while (yield take(CounterActionTypes.START_DECREMENT_TIMER)) {
+
+        const autoDecrFork = yield fork(decrementTimer);
+
+        yield take(CounterActionTypes.END_DECREMENT_TIMER);
+
+        yield cancel(autoDecrFork);
+
+    }
+
 }

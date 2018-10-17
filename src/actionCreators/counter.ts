@@ -65,3 +65,11 @@ export const startIncrementTimer: TypedActionCreator<CounterActions.StartIncreme
 export const endIncrementTimer: TypedActionCreator<CounterActions.EndIncrementTimer> = () => ({
   type: CounterActionTypes.END_INCREMENT_TIMER
 });
+
+export const startDecrementTimer: TypedActionCreator<CounterActions.StartDecrementTimer> = () => ({
+  type: CounterActionTypes.START_DECREMENT_TIMER
+});
+
+export const endDecrementTimer: TypedActionCreator<CounterActions.EndDecrementTimer> = () => ({
+  type: CounterActionTypes.END_DECREMENT_TIMER
+});
